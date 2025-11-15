@@ -40,7 +40,7 @@ app.use(
     origin: [
       'http://localhost:8080',
       'http://localhost:5173',
-      'https://project-jago-app-backend-production.up.railway.app',
+      'https://project-jago-app-frontend.vercel.app',
     ],
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
