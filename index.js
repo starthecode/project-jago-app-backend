@@ -39,9 +39,11 @@ app.use(
   cors({
     origin: [
       'http://localhost:8080',
+      'http://localhost:5173',
       'https://project-jago-app-frontend.vercel.app',
-    ], // your frontend dev origin
-    origin: true,
+    ],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   })
 );
