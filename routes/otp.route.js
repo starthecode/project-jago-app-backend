@@ -54,16 +54,26 @@ router.post('/getOtp', async (req, res, next) => {
     });
 
     // Nodemailer config
+    // const transporter = nodemailer.createTransport({
+    //   service: 'gmail',
+    //   auth: {
+    //     user: process.env.NODEMAILER_EMAIL,
+    //     pass: process.env.NODEMAILER_PW,
+    //   },
+    // });
+
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp-relay.brevo.com',
+      port: 587,
+      secure: false,
       auth: {
-        user: process.env.NODEMAILER_EMAIL,
-        pass: process.env.NODEMAILER_PW,
+        user: process.env.BREVO_EMAIL,
+        pass: process.env.BREVO_SMTP_KEY,
       },
     });
 
     const mailOptions = {
-      from: process.env.NODEMAILER_EMAIL,
+      from: process.env.BREVO_EMAIL,
       to: email,
       subject: `App verification code - ${otp}`,
       html: `
