@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  admin
+  manager
+  subscriber
+  user
+}
+
+model User {
+  id             Int      @id @default(autoincrement())
+  userName       String   @unique
+  email          String   @unique
+  firstName      String?
+  lastName       String?
+  password       String
+  profilePicture String   @default("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")
+  isAdmin        Boolean  @default(false)
+  role           Role     @default(user)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Otp {
+  id        Int      @id @default(autoincrement())
+  email     String
+  otp       Int
+  type      OtpType  @default(signin)
+  attempts  Int      @default(0)
+  isUsed    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email, type])
+}
+
+enum OtpType {
+  signup
+  signin
+  forgotpass
+}
+
+
+model Attendance {
+  id               Int       @id @default(autoincrement())
+  user_id          Int
+  clock_in         DateTime  @default(now())
+  clock_out        DateTime?
+  location_lat     Float?
+  location_lng     Float?
+  location_address String?
+
+  created_at       DateTime  @default(now())
+  updated_at       DateTime  @updatedAt
+
+  @@index([user_id])
+}
