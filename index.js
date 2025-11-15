@@ -37,7 +37,10 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: 'http://localhost:8080', // your frontend dev origin
+    origin: [
+      'http://localhost:8080',
+      'https://project-jago-app-frontend.vercel.app',
+    ], // your frontend dev origin
     origin: true,
     credentials: true,
   })
