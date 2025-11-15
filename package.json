@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "node dist/index.js",
+    "start": "node index.js",
     "build": "npm run clean && npm run build:frontend && npm run build:backend",
     "clean": "if exist dist rmdir /s /q dist",
     "build:frontend": "npm install --prefix frontend && npm run build --prefix frontend",
