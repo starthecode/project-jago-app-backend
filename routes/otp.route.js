@@ -67,8 +67,11 @@ router.post('/getOtp', async (req, res, next) => {
       port: 587,
       secure: false,
       auth: {
-        user: process.env.BREVO_EMAIL,
-        pass: process.env.BREVO_SMTP_KEY,
+        user: process.env.BREVO_EMAIL, // This must be your Gmail sender
+        pass: process.env.BREVO_SMTP_KEY, // SMTP key from Brevo
+      },
+      tls: {
+        rejectUnauthorized: false,
       },
     });
 
