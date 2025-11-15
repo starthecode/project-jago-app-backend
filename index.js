@@ -41,6 +41,7 @@ app.use(
       'http://localhost:8080',
       'http://localhost:5173',
       'https://project-jago-app.vercel.app',
+      'https://project-jago-app-backend.onrender.com',
     ],
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
