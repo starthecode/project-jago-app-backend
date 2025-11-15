@@ -43,10 +43,10 @@ export const clockIn = async (req, res) => {
 // Clock Out
 export const clockOut = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { userId } = req.params;
 
     const updated = await prisma.attendance.update({
-      where: { id: Number(id) },
+      where: { userId: Number(userId) },
       data: { clock_out: new Date().toISOString() },
     });
 
