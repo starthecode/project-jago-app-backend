@@ -9,6 +9,6 @@ const router = express.Router();
 
 router.get('/today/:userId', getTodayAttendance);
 router.post('/clock-in', clockIn);
-router.put('/clock-out/:userId', clockOut);
+router.put('/clock-out/:id', clockOut);
 
 export default router;
